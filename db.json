@@ -1,0 +1,39 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Design the homepage layout",
+      "description": "Create a wireframe and finalize the homepage design",
+      "priority": "High",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "title": "Set up JSON Server",
+      "description": "Install and configure json-server for the mock API",
+      "priority": "High",
+      "completed": true
+    },
+    {
+      "id": 3,
+      "title": "Build the TaskForm component",
+      "description": "Create a form to add new tasks with title, description, and priority",
+      "priority": "Medium",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "title": "Build the TaskCard component",
+      "description": "Display individual task details with complete and delete buttons",
+      "priority": "Medium",
+      "completed": false
+    },
+    {
+      "id": 5,
+      "title": "Add search and filter functionality",
+      "description": "Allow users to search tasks and filter by priority level",
+      "priority": "Low",
+      "completed": false
+    }
+  ]
+}
