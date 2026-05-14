@@ -8,7 +8,7 @@
     padding: 20px;
     background-color: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(21, 247, 213, 0.1);
 }
 
 /* Styling the input, textarea, and select fields */
@@ -16,7 +16,7 @@
 .task-form textarea, 
 .task-form select {
     padding: 12px 15px;
-    border: 2px solid #e2e8f0; /* Soft gray border */
+    border: 2px solid #91b6e6; /* Soft gray border */
     border-radius: 8px;
     font-size: 16px;
     font-family: 'Inter', sans-serif;
