@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import "./App.css";
 
@@ -36,6 +37,10 @@ function App() {
     fetchTasks();
   }, []);
 
+  function addTask(newTask) {
+    setTasks([...tasks, newTask]);
+  }
+
   function deleteTask(id) {
     setTasks(tasks.filter((task) => task.id !== id));
   }
@@ -56,6 +61,8 @@ function App() {
 
         <p>Tasks Loaded: {tasks.length}</p>
       </section>
+
+      <TaskForm onTaskAdded={addTask} />
 
       {isLoading && <p>Loading tasks...</p>}
 

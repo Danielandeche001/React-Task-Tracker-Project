@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 //use state to manage form inputs and handle form submission to add new tasks to the task list.
 function TaskForm({ onTaskAdded }) {
-  const [taskName, setTaskName] = useState('');
+  const [title, setTitle] = useState('');
   const [priority, setPriority] = useState('Low');
   const [description, setDescription] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const newTask = {
-      name: taskName,
+      title: title,
       priority: priority,
       completed: false,
       description: description // Placeholder description
@@ -26,7 +26,7 @@ function TaskForm({ onTaskAdded }) {
     .then((res) => res.json())
     .then((data) => {
       onTaskAdded(data); // Updates the global state in App.jsx
-      setTaskName('');   // Resets form
+      setTitle('');      // Resets form
       setPriority('Low'); // Resets priority
       setDescription(''); // Resets description
     });
@@ -38,9 +38,9 @@ function TaskForm({ onTaskAdded }) {
     <form onSubmit={handleSubmit} className="task-form">
       <input 
         type="text" 
-        placeholder="Enter task name..." 
-        value={taskName}
-        onChange={(e) => setTaskName(e.target.value)}
+        placeholder="Enter task title..." 
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
         required 
       />
       <br></br>
