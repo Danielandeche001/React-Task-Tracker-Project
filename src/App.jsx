@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
+import { getTasks, updateTask } from "./services/tasks";
 import "./App.css";
-
-const API_URL = "http://localhost:3000/tasks";
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -13,13 +12,7 @@ function App() {
   useEffect(() => {
     async function fetchTasks() {
       try {
-        const response = await fetch(API_URL);
-
-        if (!response.ok) {
-          throw new Error(`HTTP Error: ${response.status}`);
-        }
-
-        const data = await response.json();
+        const data = await getTasks();
 
         setTasks(data);
         setError("");
@@ -27,7 +20,7 @@ function App() {
         console.error("Fetch Error:", error);
 
         setError(
-          "Could not load tasks. Make sure JSON Server is running."
+          "Could not load tasks. Check your Firebase setup."
         );
       } finally {
         setIsLoading(false);
@@ -48,9 +41,22 @@ function App() {
   function onUpdateTask(updatedTask) {
     setTasks(
       tasks.map((task) =>
-        task.id === updatedTask.id ? updatedTask : task
+        task.id === updatedTask.id ? { ...task, ...updatedTask } : task
       )
     );
+  }
+
+  async function toggleTaskComplete(task) {
+    try {
+      const updatedTask = await updateTask(task.id, {
+        completed: !task.completed,
+      });
+
+      onUpdateTask(updatedTask);
+    } catch (error) {
+      console.error("Complete Error:", error);
+      setError("Could not update this task.");
+    }
   }
 
   return (
@@ -73,6 +79,7 @@ function App() {
           tasks={tasks}
           deleteTask={deleteTask}
           onUpdateTask={onUpdateTask}
+          onToggleComplete={toggleTaskComplete}
         />
       )}
     </main>

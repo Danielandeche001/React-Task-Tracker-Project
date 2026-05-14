@@ -15,7 +15,7 @@ A task tracking web app built with React and Vite for our group project.
 
 **Faith**
 - Build the TaskForm component
-- Write the POST request to add new tasks to db.json
+- Write the request to add new tasks to Firebase
 
 **Winfrey**
 - Build the TaskCard component
@@ -33,7 +33,7 @@ A task tracking web app built with React and Vite for our group project.
 - Mark tasks as complete
 - Delete tasks
 - Search and filter by priority
-- Data is saved using JSON Server
+- Data is saved using Firebase Firestore
 
 ## How to run it
 
@@ -49,22 +49,7 @@ Then start the app:
 npm run dev
 ```
 
-In a second terminal, start the local task database:
-
-```
-npm run server
-```
-
 Open `http://localhost:5173` in your browser.
-
-For now, Daniel's `App.jsx` fetches tasks from:
-
-```
-http://localhost:3000/tasks
-```
-
-That URL works while learning locally because JSON Server reads the tasks from
-`db.json`.
 
 ## Branches
 

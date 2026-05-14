@@ -1,36 +1,33 @@
 import { useState } from 'react';
+import { createTask } from "../services/tasks";
 
 //use state to manage form inputs and handle form submission to add new tasks to the task list.
 function TaskForm({ onTaskAdded }) {
   const [title, setTitle] = useState('');
   const [priority, setPriority] = useState('Low');
   const [description, setDescription] = useState('');
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     const newTask = {
-      title: title,
-      priority: priority,
+      title,
+      priority,
       completed: false,
-      description: description // Placeholder description
+      description
     };
-    // POST request implementation 
-    
-    fetch("http://localhost:3000/tasks", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newTask),
-    })
-    .then((res) => res.json())
-    .then((data) => {
+
+    try {
+      const data = await createTask(newTask);
+
       onTaskAdded(data); // Updates the global state in App.jsx
       setTitle('');      // Resets form
       setPriority('Low'); // Resets priority
       setDescription(''); // Resets description
-    });
-  };
+    } catch (error) {
+      console.error("Create Error:", error);
+      alert("Could not add the task. Check your Firebase setup.");
+    }
+  }
 
   return (
     <div className="task-form-container">

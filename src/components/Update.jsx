@@ -1,4 +1,5 @@
 import { useState} from "react";
+import { updateTask } from "../services/tasks";
 
 function Update ({tasks, onUpdateTask}) {
     const [description, setDescription] = useState(tasks.description);
@@ -6,15 +7,12 @@ function Update ({tasks, onUpdateTask}) {
     function handleUpdate(e) {
         e.preventDefault();
 
-        fetch(`http://localhost:3000/tasks/${tasks.id}`,
-            {
-                method: "PATCH",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({description})
-            }
-        )
-        .then((r) => r.json())
-        .then((updateTask) => onUpdateTask(updateTask));
+        updateTask(tasks.id, { description })
+            .then((updatedTask) => onUpdateTask(updatedTask))
+            .catch((error) => {
+                console.error("Update Error:", error);
+                alert("Could not update the task. Check your Firebase setup.");
+            });
     };
     return (
             <div>

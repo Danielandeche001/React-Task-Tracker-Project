@@ -2,7 +2,7 @@ import Update from "./Update";
 import Complete from "./Complete";
 import Delete from "./Delete";
 
-function TaskCard({ task, deleteTask, onUpdateTask }) {
+function TaskCard({ task, deleteTask, onUpdateTask, onToggleComplete }) {
   if (!task) return null;
   return (
     <div
@@ -20,7 +20,7 @@ function TaskCard({ task, deleteTask, onUpdateTask }) {
       <p>{task.duedate}</p>
       <p style={{color: "black"}}>{task.priority}</p>
       <Update tasks={task} onUpdateTask={onUpdateTask}/>
-      <Complete/>
+      <Complete task={task} onToggleComplete={onToggleComplete}/>
       <Delete tasks={task} deleteTask={deleteTask}/>
     </div>
     );

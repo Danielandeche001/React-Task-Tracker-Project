@@ -1,15 +1,11 @@
-import { useState } from "react";
-
-function Complete () {
-   const [complete, setComplete] = useState(false);
-
+function Complete ({ task, onToggleComplete }) {
    return (
       <div>
-         <h4>{complete ? "(Completed)" : ""}</h4>
+         <h4>{task.completed ? "(Completed)" : ""}</h4>
 
-         <button onClick={() => setComplete(!complete)}
+         <button onClick={() => onToggleComplete(task)}
          >
-            {complete ? "Completed" : "Pending"}
+            {task.completed ? "Completed" : "Pending"}
          </button>
       </div>
    );

@@ -1,15 +1,15 @@
+import { deleteTask as deleteTaskFromDatabase } from "../services/tasks";
+
 function Delete ({ tasks, deleteTask}) {
 
-    function handleDelete() {
-        // fetch data
-        fetch(`http://localhost:3000/tasks/${tasks.id}`, 
-            // deletes the task
-            {method: "DELETE",})
-            .then((r) => {
-                if (r.ok) {
-                    deleteTask(tasks.id);
-                }
-            });
+    async function handleDelete() {
+        try {
+            await deleteTaskFromDatabase(tasks.id);
+            deleteTask(tasks.id);
+        } catch (error) {
+            console.error("Delete Error:", error);
+            alert("Could not delete the task. Check your Firebase setup.");
+        }
     };
 
     return (
