@@ -2,36 +2,28 @@ import { useEffect, useState } from "react";
 import TaskList from "./components/TaskList";
 import "./App.css";
 
+const API_URL = "http://localhost:3000/tasks";
+
 function App() {
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
-  
   useEffect(() => {
     async function fetchTasks() {
       try {
-        const response = await fetch(
-          "http://localhost:3000/tasks"
-        );
+        const response = await fetch(API_URL);
 
         if (!response.ok) {
-          throw new Error(
-            `HTTP Error: ${response.status}`
-          );
+          throw new Error(`HTTP Error: ${response.status}`);
         }
 
         const data = await response.json();
 
-        console.log("Fetched Tasks:", data);
-
         setTasks(data);
         setError("");
       } catch (error) {
-        console.error(
-          "Fetch Error:",
-          error
-        );
+        console.error("Fetch Error:", error);
 
         setError(
           "Could not load tasks. Make sure JSON Server is running."
@@ -43,25 +35,17 @@ function App() {
 
     fetchTasks();
   }, []);
-  
-  // DELETE TASK
-  function deleteTask(id) {
-    const updatedTasks = tasks.filter(
-      (task) => task.id !== id
-    );
 
-    setTasks(updatedTasks);
+  function deleteTask(id) {
+    setTasks(tasks.filter((task) => task.id !== id));
   }
 
-  // UPDATE TASK
   function onUpdateTask(updatedTask) {
-    const updatedTasks = tasks.map((task) =>
-      task.id === updatedTask.id
-        ? updatedTask
-        : task
+    setTasks(
+      tasks.map((task) =>
+        task.id === updatedTask.id ? updatedTask : task
+      )
     );
-
-    setTasks(updatedTasks);
   }
 
   return (
