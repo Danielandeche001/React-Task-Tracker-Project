@@ -4,7 +4,8 @@ import Delete from "./Delete";
 
 function TaskCard({ task, deleteTask, onUpdateTask }) {
   if (!task) return null;
-  return <div
+  return (
+    <div
         style={{
         border: "1px solid #ccc", 
         borderStyle: "dashed", 
