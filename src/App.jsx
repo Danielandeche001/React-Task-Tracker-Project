@@ -21,3 +21,25 @@ function App() {
           );
         }
 
+        const data = await response.json();
+
+        console.log("Fetched Tasks:", data);
+
+        setTasks(data);
+        setError("");
+      } catch (error) {
+        console.error(
+          "Fetch Error:",
+          error
+        );
+
+        setError(
+          "Could not load tasks. Make sure JSON Server is running."
+        );
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchTasks();
+  }, []);
