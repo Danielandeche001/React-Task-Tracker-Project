@@ -49,7 +49,22 @@ Then start the app:
 npm run dev
 ```
 
+In a second terminal, start the local task database:
+
+```
+npm run server
+```
+
 Open `http://localhost:5173` in your browser.
+
+For now, Daniel's `App.jsx` fetches tasks from:
+
+```
+http://localhost:3000/tasks
+```
+
+That URL works while learning locally because JSON Server reads the tasks from
+`db.json`.
 
 ## Branches
 
