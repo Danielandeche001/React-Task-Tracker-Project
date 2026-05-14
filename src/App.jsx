@@ -64,3 +64,28 @@ function App() {
     setTasks(updatedTasks);
   }
 
+  return (
+    <main className="app">
+      <section className="app-header">
+        <h1>Group 5 Task Tracker</h1>
+        <p>Track the tasks for our React group project.</p>
+
+        <p>Tasks Loaded: {tasks.length}</p>
+      </section>
+
+      {isLoading && <p>Loading tasks...</p>}
+
+      {error && <p>{error}</p>}
+
+      {!isLoading && !error && (
+        <TaskList
+          tasks={tasks}
+          deleteTask={deleteTask}
+          onUpdateTask={onUpdateTask}
+        />
+      )}
+    </main>
+  );
+}
+
+export default App;
