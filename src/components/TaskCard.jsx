@@ -4,26 +4,28 @@ import Delete from "./Delete";
 
 function TaskCard({ task, deleteTask, onUpdateTask, onToggleComplete }) {
   if (!task) return null;
+
   return (
-    <div
-        style={{
-        border: "1px solid #ccc", 
-        borderStyle: "dashed", 
-        background:"linear-gradient(to right, #2193b0, #6dd5ed, #00b09b)"
-        }}
-        className="card"
-           >
-    <h2>TaskCard placeholder</h2>
-    <p>{task.id}</p>
-      <h1>{task.title}</h1>
-      <span style={{color: "black"}}>{task.description}</span>
-      <p>{task.duedate}</p>
-      <p style={{color: "black"}}>{task.priority}</p>
-      <Update tasks={task} onUpdateTask={onUpdateTask}/>
-      <Complete task={task} onToggleComplete={onToggleComplete}/>
-      <Delete tasks={task} deleteTask={deleteTask}/>
-    </div>
-    );
-};
+    <article className={`card ${task.completed ? "completed" : ""}`}>
+      <div className="card-header">
+        <div>
+          <h3>{task.title}</h3>
+          <p>{task.description}</p>
+        </div>
+
+        <span className={`priority priority-${task.priority.toLowerCase()}`}>
+          {task.priority}
+        </span>
+      </div>
+
+      <Update tasks={task} onUpdateTask={onUpdateTask} />
+
+      <div className="card-actions">
+        <Complete task={task} onToggleComplete={onToggleComplete} />
+        <Delete tasks={task} deleteTask={deleteTask} />
+      </div>
+    </article>
+  );
+}
 
 export default TaskCard;

@@ -1,21 +1,25 @@
 import TaskCard from "./TaskCard";
 
-function TaskList({ tasks = [], deleteTask, onUpdateTask, onToggleComplete}) {
+function TaskList({ tasks = [], deleteTask, onUpdateTask, onToggleComplete }) {
   return (
-    <div>
-    <h2>TASKS</h2>
-      {tasks.map((task) => (
-        <TaskCard
-          key={task.id}
-          task={task}
-          deleteTask={deleteTask}
-          onUpdateTask={onUpdateTask}
-          onToggleComplete={onToggleComplete}
-        />
-      ))}
-      <p>{tasks.length} tasks loaded.</p>
-  </div>
-    );
+    <section className="task-list">
+      <h2>Tasks</h2>
+
+      <div className="task-grid">
+        {tasks.map((task) => (
+          <TaskCard
+            key={task.id}
+            task={task}
+            deleteTask={deleteTask}
+            onUpdateTask={onUpdateTask}
+            onToggleComplete={onToggleComplete}
+          />
+        ))}
+      </div>
+
+      <p className="task-count">{tasks.length} tasks loaded.</p>
+    </section>
+  );
 }
 
 export default TaskList;

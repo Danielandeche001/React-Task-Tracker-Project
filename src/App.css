@@ -1,33 +1,206 @@
-/* Styling the container for the form */
+.app {
+  width: min(100%, 1040px);
+  margin: 0 auto;
+  padding: 32px 20px 56px;
+}
+
+.app-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.app-header h1 {
+  margin: 0 0 8px;
+  font-size: clamp(36px, 6vw, 56px);
+  line-height: 1;
+  color: #1185b7;
+}
+
+.app-header p {
+  margin: 4px 0;
+}
+
+.task-form-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 34px;
+}
+
 .task-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(21, 247, 213, 0.1);
+  display: grid;
+  gap: 14px;
+  width: min(100%, 520px);
+  padding: 22px;
+  background: #ffffff;
+  border: 1px solid #dce9f2;
+  border-radius: 8px;
+  box-shadow: 0 14px 30px rgba(16, 87, 120, 0.1);
 }
 
-/* Styling the input, textarea, and select fields */
-.task-form input, 
-.task-form textarea, 
-.task-form select {
-    padding: 12px 15px;
-    border: 2px solid #91b6e6; /* Soft gray border */
-    border-radius: 8px;
-    font-size: 16px;
-    font-family: 'Inter', sans-serif;
-    outline: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-  /* Changes when the user clicks/focuses on the field */
-.task-form input:focus, 
-.task-form textarea:focus, 
-.task-form select:focus {
-    border-color: #6be5a8; /* Match your presentation's purple theme */
-    box-shadow: 0 0 0 3px rgba(188, 132, 238, 0.2);
+.task-form input,
+.task-form textarea,
+.task-form select,
+.update-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #b9d3e8;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1f2937;
+  font: inherit;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.task-form textarea,
+.update-form textarea {
+  min-height: 86px;
+  resize: vertical;
+}
+
+.task-form input:focus,
+.task-form textarea:focus,
+.task-form select:focus,
+.update-form textarea:focus {
+  border-color: #1185b7;
+  box-shadow: 0 0 0 3px rgba(17, 133, 183, 0.14);
+}
+
+.task-form button,
+.update-form button,
+.complete-button,
+.delete-button {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.task-form button,
+.update-form button {
+  background: #1185b7;
+}
+
+.task-list {
+  display: grid;
+  gap: 14px;
+}
+
+.task-list h2 {
+  margin: 0;
+  text-align: left;
+  color: #1f2937;
+}
+
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+  background: #ffffff;
+  border: 1px solid #dce9f2;
+  border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(16, 87, 120, 0.08);
+  text-align: left;
+}
+
+.card.completed {
+  border-color: #bddfc9;
+  background: #f7fcf9;
+}
+
+.card.completed h3 {
+  text-decoration: line-through;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.card h3 {
+  margin: 0 0 6px;
+  color: #111827;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.card p {
+  color: #4b5563;
+}
+
+.priority {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.priority-low {
+  background: #eef8f0;
+  color: #247a3e;
+}
+
+.priority-medium {
+  background: #fff5d9;
+  color: #976400;
+}
+
+.priority-high {
+  background: #ffe8e6;
+  color: #b42318;
+}
+
+.update-form {
+  display: grid;
+  gap: 10px;
+}
+
+.update-form textarea {
+  min-height: 70px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.complete-button {
+  background: #5b6472;
+}
+
+.complete-button.done {
+  background: #237a3b;
+}
+
+.delete-button {
+  background: #c0342b;
+}
+
+.task-count {
+  text-align: center;
+  color: #6b7280;
+}
+
+@media (max-width: 640px) {
+  .app {
+    padding: 24px 14px 40px;
+  }
+
+  .card-header {
+    display: grid;
+  }
+}
