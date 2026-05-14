@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-
-
 //use state to manage form inputs and handle form submission to add new tasks to the task list.
 function TaskForm({ onTaskAdded }) {
   const [taskName, setTaskName] = useState('');
