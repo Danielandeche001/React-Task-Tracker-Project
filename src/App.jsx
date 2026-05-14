@@ -43,3 +43,24 @@ function App() {
 
     fetchTasks();
   }, []);
+  
+  // DELETE TASK
+  function deleteTask(id) {
+    const updatedTasks = tasks.filter(
+      (task) => task.id !== id
+    );
+
+    setTasks(updatedTasks);
+  }
+
+  // UPDATE TASK
+  function onUpdateTask(updatedTask) {
+    const updatedTasks = tasks.map((task) =>
+      task.id === updatedTask.id
+        ? updatedTask
+        : task
+    );
+
+    setTasks(updatedTasks);
+  }
+
