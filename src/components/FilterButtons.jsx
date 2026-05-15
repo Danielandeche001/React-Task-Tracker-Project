@@ -1,21 +1,18 @@
-function FilterButtons({ setFilter }) {
+function FilterButtons({ filter, setFilter }) {
+  const priorities = ["All", "Low", "Medium", "High"];
+
   return (
-    <div>
-      <button onClick={() => setFilter("All")}>
-        All
-      </button>
-
-      <button onClick={() => setFilter("Low")}>
-        Low
-      </button>
-
-      <button onClick={() => setFilter("Medium")}>
-        Medium
-      </button>
-
-      <button onClick={() => setFilter("High")}>
-        High
-      </button>
+    <div className="filter-buttons">
+      {priorities.map((priority) => (
+        <button
+          className={filter === priority ? "active" : ""}
+          key={priority}
+          onClick={() => setFilter(priority)}
+          type="button"
+        >
+          {priority}
+        </button>
+      ))}
     </div>
   );
 }

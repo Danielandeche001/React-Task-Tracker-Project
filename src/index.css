@@ -1,7 +1,7 @@
 :root {
   --text: #4b5563;
   --text-h: #1185b7;
-  --bg: #f4f8fb;
+  --bg: #eef5f9;
   --border: #d9e5ee;
   --sans: system-ui, "Segoe UI", Roboto, sans-serif;
 
@@ -21,6 +21,9 @@
 body {
   margin: 0;
   min-width: 320px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(238, 245, 249, 0.94)),
+    var(--bg);
 }
 
 #root {

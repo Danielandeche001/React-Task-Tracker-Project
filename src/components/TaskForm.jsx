@@ -32,25 +32,34 @@ function TaskForm({ onTaskAdded }) {
   return (
     <div className="task-form-container">
       <form onSubmit={handleSubmit} className="task-form">
-        <input
-          type="text"
-          placeholder="Enter task title..."
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
+        <label>
+          <span>Task title</span>
+          <input
+            type="text"
+            placeholder="Enter task title..."
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+        </label>
 
-        <textarea
-          placeholder="Enter task description..."
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
+        <label>
+          <span>Description</span>
+          <textarea
+            placeholder="Enter task description..."
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </label>
 
-        <select value={priority} onChange={(e) => setPriority(e.target.value)}>
-          <option value="Low">Low</option>
-          <option value="Medium">Medium</option>
-          <option value="High">High</option>
-        </select>
+        <label>
+          <span>Priority</span>
+          <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </label>
 
         <button type="submit">Add Task</button>
       </form>

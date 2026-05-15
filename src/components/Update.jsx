@@ -17,6 +17,7 @@ function Update({ tasks, onUpdateTask }) {
 
   return (
     <form className="update-form" onSubmit={handleUpdate}>
+      <label>Edit description</label>
       <textarea
         name="description"
         value={description}

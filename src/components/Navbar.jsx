@@ -2,7 +2,8 @@ function Navbar() {
   return (
     <nav className="navbar">
       <a className="nav-brand" href="#top">
-        Group 5 Task Tracker
+        <span>G5</span>
+        Task Tracker
       </a>
 
       <div className="nav-links">
