@@ -2,7 +2,7 @@ import TaskCard from "./TaskCard";
 
 function TaskList({ tasks = [], deleteTask, onUpdateTask, onToggleComplete }) {
   return (
-    <section className="task-list">
+    <section className="task-list" id="tasks">
       <h2>Tasks</h2>
 
       <div className="task-grid">

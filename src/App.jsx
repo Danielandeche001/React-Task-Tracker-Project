@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Navbar from "./components/Navbar";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import { getTasks, updateTask } from "./services/tasks";
@@ -60,7 +61,10 @@ function App() {
   }
 
   return (
-    <main className="app">
+    <>
+      <Navbar />
+
+      <main className="app" id="top">
       <section className="app-header">
         <h1>Group 5 Task Tracker</h1>
         <p>Track the tasks for our React group project.</p>
@@ -68,7 +72,9 @@ function App() {
         <p>Tasks Loaded: {tasks.length}</p>
       </section>
 
-      <TaskForm onTaskAdded={addTask} />
+      <section id="add-task">
+        <TaskForm onTaskAdded={addTask} />
+      </section>
 
       {isLoading && <p>Loading tasks...</p>}
 
@@ -82,7 +88,8 @@ function App() {
           onToggleComplete={toggleTaskComplete}
         />
       )}
-    </main>
+      </main>
+    </>
   );
 }
 
